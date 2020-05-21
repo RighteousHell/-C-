@@ -19,7 +19,7 @@
 struct packet
 {
   uint16_t packet_size;
-  uint16_t sequence_number;
+  uint16_t sequence_number = 0;
   char time [TIME_SIZE] = {'\0'};
   uint16_t data_size;
   unsigned char cs_md5[CS_SIZE] = {'\0'};
