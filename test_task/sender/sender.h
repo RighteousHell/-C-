@@ -11,33 +11,37 @@
 #include <sys/time.h>
 #include <cstdlib>
 #include <unistd.h>
-#include <mbedtls/md5.h>                   //33+16=49+4381
+#include <mbedtls/md5.h>
 #include <chrono>
 #include <thread>
 #define CS_SIZE 16
-#define TIME_SIZE 21
+#define TIME_SIZE 25
 
 #pragma pack (push, 1)
 struct packet
 {
-  uint32_t packet_size;
-  uint32_t sequence_number;
+  uint16_t packet_size;
+  uint16_t sequence_number;
   char time [TIME_SIZE] = {'\0'};
-  uint32_t data_size;
-  std::string  data;
+  uint16_t data_size;
   unsigned char cs_md5[CS_SIZE] = {'\0'};
+  char*  data = nullptr;
 };
 #pragma pack (pop)
 
 void fill_packet_data (packet& pct, std::ifstream& stream)
 {
- if (!pct.data.empty())
- {
-   pct.data.clear();
- }
-getline(stream, pct.data);
-pct.data.shrink_to_fit();
-pct.data_size = pct.data.length();
+  if (pct.data)
+  {
+    delete [] pct.data;
+  }
+std::string tmp;
+getline(stream, tmp);
+tmp.shrink_to_fit();
+
+pct.data_size = tmp.length();
+pct.data = new char[pct.data_size * sizeof(char)];
+strcpy(pct.data, tmp.c_str());
 }
 
 
@@ -53,7 +57,7 @@ strcpy(pct.time, time.c_str());
 
 void  make_cs_md5 (packet& pct)
 {
-mbedtls_md5 (reinterpret_cast<const unsigned char*>(pct.data.c_str()), size_t(pct.data_size), pct.cs_md5);
+mbedtls_md5 (reinterpret_cast<const unsigned char*>(pct.data), size_t(pct.data_size), pct.cs_md5);
 }
 
 inline void sequence_increase(packet& pct)
@@ -70,8 +74,8 @@ void send_msg (packet& pct, int socket)
 {
 sequence_increase(pct);
 fill_packet_time(pct);
+int res = send (socket,  &pct ,  47, 0);
+send (socket,  pct.data ,  pct.data_size, 0);
 
-int res = send (socket, (void*) &pct, pct.packet_size, 0);
-std::cout << res << " bites was sent" << std::endl;
 std::cout << "Sent:packet #" << pct.sequence_number <<" time of send: " << pct.time << std::endl;
 }
