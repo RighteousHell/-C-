@@ -1,3 +1,0 @@
-/home/righteoushell/Desktop/test_task/CMakeFiles/edit_cache.dir
-/home/righteoushell/Desktop/test_task/CMakeFiles/rebuild_cache.dir
-/home/righteoushell/Desktop/test_task/CMakeFiles/Sender.dir

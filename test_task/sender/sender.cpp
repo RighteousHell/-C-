@@ -45,8 +45,9 @@ send_msg (pack, sock_desk);
 //std::cout << sizeof(pack.cs_md5) <<  std::endl;
 std::cout << pack.packet_size <<  std::endl;
 std::cout << pack.data_size << std::endl;
+
 /***** General cycle*****/
-/*for (int i = 0; i < 2; i++)
+for (int i = 0; i < 2; i++)
 {
   std::ifstream inp_str ("sender/source.csv");
   if (!inp_str.is_open())
@@ -68,7 +69,7 @@ std::cout << pack.data_size << std::endl;
   {
   sleep(10);
   }
-}*/
+}
 
 
 close(sock_desk);
