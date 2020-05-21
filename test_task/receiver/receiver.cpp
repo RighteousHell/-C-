@@ -73,21 +73,17 @@ int main (int argc, char const *argv[])
 
 packet pack;
 
-while(true)
+while(pack.sequence_number < 200)
 {
-  if (!accepter)
-  {
-    return 0;
-  }
-receive_msg (pack, accepter);
+  receive_msg (pack, accepter);
 }
-getchar();
+
   close (accepter);
   close(sock_desk);
   return 0;
 }
 
-void receive_msg (packet& pct, int accepter)
+void  receive_msg (packet& pct, int accepter)
 {
 recv (accepter, &pct.packet_size, sizeof(uint16_t), 0);
 recv (accepter, &pct.sequence_number, sizeof(uint16_t), 0);
