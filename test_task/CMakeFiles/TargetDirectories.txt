@@ -1,0 +1,8 @@
+/home/righteoushell/Desktop/test_task/CMakeFiles/rebuild_cache.dir
+/home/righteoushell/Desktop/test_task/CMakeFiles/edit_cache.dir
+/home/righteoushell/Desktop/test_task/sender/CMakeFiles/edit_cache.dir
+/home/righteoushell/Desktop/test_task/sender/CMakeFiles/rebuild_cache.dir
+/home/righteoushell/Desktop/test_task/sender/CMakeFiles/Sender.dir
+/home/righteoushell/Desktop/test_task/receiver/CMakeFiles/rebuild_cache.dir
+/home/righteoushell/Desktop/test_task/receiver/CMakeFiles/edit_cache.dir
+/home/righteoushell/Desktop/test_task/receiver/CMakeFiles/Receiver.dir

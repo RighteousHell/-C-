@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/righteoushell/Desktop/test_task/sender/sender.cpp
+sender.h
+/home/righteoushell/Desktop/test_task/sender/sender.h
+
+/home/righteoushell/Desktop/test_task/sender/sender.h
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+string
+-
+vector
+-
+iostream
+-
+cstring
+-
+arpa/inet.h
+-
+fstream
+-
+sstream
+-
+sys/time.h
+-
+cstdlib
+-
+unistd.h
+-
+mbedtls/md5.h
+-
+chrono
+-
+thread
+-
+
