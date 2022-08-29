@@ -1,0 +1,10 @@
+﻿  pch.cpp
+  test.cpp
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(44,45): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(48,44): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(147,23): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(147,42): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(149,27): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(149,45): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+D:\repos\-C-\interview_task_4\LongNumTest\LongNumTest\LongNumsSum.h(251,117): warning C4244: аргумент: преобразование "__int64" в "const unsigned int", возможна потеря данных
+  LongNumTest.vcxproj -> D:\repos\-C-\interview_task_4\LongNumTest\Debug\LongNumTest.exe
