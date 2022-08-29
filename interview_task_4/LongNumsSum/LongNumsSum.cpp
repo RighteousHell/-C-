@@ -6,6 +6,18 @@ int main()
 	//file_handler::File_handler dest_handler(PATH_TO_DEST, file_handler::modes::output);
 	std::ifstream fin(PATH_TO_SOURCE);
 	std::ofstream fout(PATH_TO_DEST);
+	
+	if (!fin.is_open())
+	{
+		std::cout << "Source file didn't open!" << std::endl;
+		exit(-1);
+	}
+
+	if (!fout.is_open())
+	{
+		std::cout << "Destination file didn't open!";
+		exit(-2);
+	}
 
 	if (fin.peek() == EOF)
 	{
