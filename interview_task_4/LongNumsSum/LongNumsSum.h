@@ -227,19 +227,6 @@ namespace big_num
 			return m_negative;
 		}
 
-		void remove_first_zeros() {
-			while (m_lnum.size() > 1 && m_lnum.back() == 0) 
-			{
-				m_lnum.pop_back();
-			}
-
-			if (m_lnum.size() == 1 && m_lnum[0] == 0)
-			{
-				m_negative = false;
-			}
-		}
-
-
 		friend std::ostream& operator <<(std::ostream& os, const Big_num& num) 
 		{
 			if (num.m_lnum.empty()) os << 0;
@@ -266,6 +253,19 @@ namespace big_num
 		static const int base = 1000000000;
 		bool m_negative = false;
 		std::vector<int> m_lnum;
+		
+		void remove_first_zeros() 
+		{
+			while (m_lnum.size() > 1 && m_lnum.back() == 0) 
+			{
+				m_lnum.pop_back();
+			}
+
+			if (m_lnum.size() == 1 && m_lnum[0] == 0)
+			{
+				m_negative = false;
+			}
+		}
 
 	};
 }
