@@ -144,6 +144,7 @@ static void sbdd_xfer_bio(struct bio *bio)
 		pos += sbdd_xfer(&bvec, pos, dir);
 
 	bio_endio(bio);
+	pr_debug("Virtual device bio processed\n");
 	if (atomic_dec_and_test(&__sbdd.refs_cnt))
 		wake_up(&__sbdd.exitwait);
 	}
