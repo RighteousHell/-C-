@@ -24,7 +24,9 @@
 #define SBDD_SECTOR_SIZE       (1 << SBDD_SECTOR_SHIFT)
 #define SBDD_MIB_SECTORS       (1 << (20 - SBDD_SECTOR_SHIFT))
 #define SBDD_NAME              "sbdd"
-#define MY_IOCTL_OPEN_DEV      _IOR('A', 1, char*)  
+#define OPEN_PHY_DEV           _IOR('A', 1, char*)
+#define MAX_NAME_DEV		   20
+
 struct sbdd {
 	wait_queue_head_t       exitwait;
 	spinlock_t              datalock;
@@ -56,13 +58,12 @@ static void phy_end_io(struct bio *bio)
     bio_put(bio);
 	pr_debug("Clone processed\n");
 
-	
+	bio_endio(orig_bio);
+	pr_debug("Original bio processed\n");
+
     if (atomic_dec_and_test(&__sbdd.refs_cnt)) {
 		wake_up(&__sbdd.exitwait);
     }
-
-	bio_endio(orig_bio);
-	pr_debug("Original bio processed\n");
     
 }
 
@@ -71,15 +72,15 @@ static int sbdd_ioctl(struct block_device *bdev, fmode_t mode, unsigned int cmd,
     int ret = 0;
 
     switch (cmd) {
-        case MY_IOCTL_OPEN_DEV:
+        case OPEN_PHY_DEV:
             {
-                char path[NAME_MAX + 1];
-                if (copy_from_user(&path, (char __user *)arg, NAME_MAX)) {
+                char path[MAX_NAME_DEV + 1];
+                if (copy_from_user(&path, (char __user *)arg, MAX_NAME_DEV)) {
                     ret = -ENOENT;
 					pr_err("can't to get path from user buf\n");
                     break;
                 }
-				path[NAME_MAX] = '\0';
+				path[MAX_NAME_DEV] = '\0';
 				plug_physical_device(path);
             }
             break;
